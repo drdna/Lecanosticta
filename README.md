@@ -2,7 +2,7 @@
 Population Genetics of the Brown Spot Needle Blight Fungus
 
 ## Processing of nanopore reads
-Use duplex mode in dorado to basecall using v10.4.1 superior accuracy model:
+Use duplex mode in dorado to basecall using r10.4.1 superior accuracy model:
 ```bash
 #!/bin/bash
 
