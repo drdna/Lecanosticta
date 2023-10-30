@@ -80,7 +80,7 @@ minOverlap=$4
 singularity run --app flye291 /share/singularity/images/ccs/conda/amd-conda9-rocky8.sinf flye  --nano-raw $correctedReads --genome-size $genomeSize  --threads 8 --out-dir ${assembly}_flye --min-overlap $minOverlap
 ```
 ## Comparative genome alignments
-1. Repeat mask genomes using custom repat masking algorithm:
+1. Repeat mask genomes using custom repeat masking algorithm:
 ```bash
 perl Run_RMSA.pl FHC121_8kb.contigs.fasta
 perl Run_RMSA.pl CBS133791.contigs.fasta
@@ -89,5 +89,5 @@ perl Run_RMSA.pl CBS133791.contigs.fasta
 ```bash
 nucmer FHC121_8kb_masked_contigs.fasta CBS133791_masked.contigs.fasta -p FHC121vCBS133791
 ```
-3. Render alignments using MummerShinyPrint.R script:
+3. Render alignments using [MummerShinyPrint.R](/code/MummerShinyPrint.R) script:
 ![FHC121 v CBS133 alignment](/data/mummerPlotX.png)
