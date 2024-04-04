@@ -1,4 +1,4 @@
-# Lecanosticta
+# Lecanosticta Genome Assemblies
 Population Genetics of the Brown Spot Needle Blight Fungus
 
 ## Processing of nanopore reads
