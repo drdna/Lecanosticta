@@ -9,7 +9,7 @@
 #SBATCH --mail-type ALL
 #SBATCH -A coa_farman_uksr		# change account ID as needed
 #SBATCH --mail-type ALL
-#SBATCH --mail-user farman@uky.edu	# change email to include those who shoudl ready notifcations about submitted/started/completed/failed jobs (separate with commas, no spaces)
+#SBATCH --mail-user farman@uky.edu	# change email to include those who should receive notifcations about submitted/started/completed/failed jobs (separate with commas, no spaces)
 
 echo "SLURM_NODELIST: "$SLURM_NODELIST
 
