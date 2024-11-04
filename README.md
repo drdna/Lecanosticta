@@ -91,3 +91,10 @@ nucmer FHC121_8kb_masked_contigs.fasta CBS133791_masked.contigs.fasta -p FHC121v
 ```
 3. Render alignments using [MummerShinyPrint.R](/code/MummerShinyPrint.R) script:
 ![FHC121 v CBS133 alignment](/data/mummerPlotX.png)
+
+## Illumina Assemblies
+1. Simplify the read ID names to the format Strain-ID_1.fq.gz (StrainID should not contain any underscores or spaces - ideally use hyphens as the only separator)
+2. Run the [trim-velvet2.sh](/code/trim-velvet2.sh) script:
+```bash
+sbatch trim-velvet2.sh <reads_directory> <StrainID_prefix> <lowKmer> <highKmer> <step>
+```
