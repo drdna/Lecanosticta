@@ -19,7 +19,7 @@ echo "SLURM_NODELIST: "$SLURM_NODELIST
 dir=$1
 
 # specify read IDs (only the prefixes that come at the start of the filenames: e.g. StrainX-1_1.fastq.gz would be StrainX-1
-readID=$2
+f=$2
 
 # specify starting k-mer value (must be odd number)
 lowK=$3
@@ -34,7 +34,7 @@ step=$5
 ## SYSTEM COMMANDS
 
 # Create directory for assembly
-mkdir $f 
+mkdir $f
 
 # copy forward reads into directory
 cp $dir/$f*_1*f*q* $f/
@@ -66,14 +66,14 @@ module unload python-2.7.18-gcc-9.3.0-5efgwu4
 
 # run the assembly in singularity
 singularity run --app perlvelvetoptimiser226 /share/singularity/images/ccs/conda/amd-conda2-centos8.sinf VelvetOptimiser.pl \
- -s $lowK -e $highK -x $step -d velvet_assembly -f ' -shortPaired -interleaved -fastq interleaved.fq'
+ -s $lowK -e $highK -x $step -d velvet_assembly_${lowK}_${highK}_${step} -f ' -shortPaired -interleaved -fastq interleaved.fq'
 
 # change the name of the assembly to the provided strain ID
-mv velvet_assembly/contigs.fa velvet_assembly/${f}".fasta"
+mv velvet_assembly_${lowK}_${highK}_${step}/contigs.fa velvet_assembly_${lowK}_${highK}_${step}/${f}".fasta"
 
 # change the name of the logfile to include the strain ID
-prefix=`ls velvet_assembly/*logfile.txt'
-mv $prefix /scratch/farman/ASSEMBLIES/${f}_${prefix/*\//}
+logfile_basename=`ls velvet_assembly_${lowK}_${highK}_${step}/*logfile.txt'
+mv $logfile_basename velvet_assembly_${lowK}_${highK}_${step}/${f}_${logfile_basename/*\//}
 
 
 # change back into the base directory 
